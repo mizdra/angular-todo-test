@@ -4,15 +4,16 @@
   "description": "Test for https://github.com/mizdra/angular-todo-test",
   "main": "index.js",
   "scripts": {
-    "start": "browser-sync start --server app --files 'app/index.html, app/bundle.js'",
-    "build": "npm run build:ts && npm run build:css",
-    "watch": "npm run watch:ts && npm run watch:css",
-    "build:ts": "browserify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
-    "watch:ts": "watchify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
-    "build:css": "postcss --map.inline -c postcss.json",
-    "watch:css": "postcss -w --map.inline -c postcss.json",
+    "start"      : "open app/index.html",
+    "build"      : "npm run build:ts && npm run build:css",
+    "build:ts"   : "browserify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
+    "build:css"  : "postcss --map.inline -c postcss.json",
+    "watch"      : "npm run watch:ts & npm run watch:css & npm run watch:html",
+    "watch:ts"   : "watchify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
+    "watch:css"  : "postcss -w --map.inline -c postcss.json",
+    "watch:html" : "browser-sync start --server app --files 'app/index.html, app/bundle.js, app/bundle.css'",
     "postinstall": "typings install",
-    "lint": "tslint app/scripts/**/*.ts"
+    "lint"       : "tslint app/scripts/**/*.ts"
   },
   "repository": {
     "type": "git",
