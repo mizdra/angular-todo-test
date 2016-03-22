@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "browser-sync start --server app --files 'app/index.html, app/bundle.js'",
-    "build": "browserify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
-    "watch": "watchify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
+    "build": "npm run build:ts && npm run build:css",
+    "watch": "npm run watch:ts && npm run watch:css",
+    "build:ts": "browserify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
+    "watch:ts": "watchify -v -d -o app/bundle.js -p [ tsify ] app/scripts/app.ts",
+    "build:css": "postcss --map.inline -c postcss.json",
+    "watch:css": "postcss -w --map.inline -c postcss.json",
     "postinstall": "typings install",
     "lint": "tslint app/scripts/**/*.ts"
   },
@@ -21,7 +25,8 @@
   },
   "homepage": "https://github.com/mizdra/angular-todo-test#readme",
   "dependencies": {
-    "angular": "^1.5.0"
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6"
   },
   "devDependencies": {
     "tsify": "^0.14.1"

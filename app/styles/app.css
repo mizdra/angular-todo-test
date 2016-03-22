@@ -1,0 +1,9 @@
+@import "bootstrap/dist/css/bootstrap.min.css"
+
+.todo-item .todo-title {
+  color: #888;
+}
+
+.done .todo-title {
+  text-decoration: line-through;
+}
